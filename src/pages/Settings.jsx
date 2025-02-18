@@ -87,7 +87,7 @@ const Settings = () => {
             { name: "Manage Inventory", to: "/inventory", color: "bg-blue-600" },
             { name: "View Sales", to: "/sales", color: "bg-green-600" },
             { name: "Manage Orders", to: "/orders", color: "bg-yellow-600" },
-            { name: "Settings", to: "/settings", color: "bg-gray-800" },
+            { name: "Dashboard", to: "/dashboard", color: "bg-gray-800" },
           ].map((link) => (
             <Link
               key={link.name}
