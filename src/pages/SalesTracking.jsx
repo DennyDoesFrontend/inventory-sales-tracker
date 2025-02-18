@@ -1,11 +1,42 @@
-// src/pages/SalesTracking.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SalesTracking = () => {
   const [salesData, setSalesData] = useState({
-    dailySales: 1500, // Mock today's sales
-    weeklySales: 10500, // Mock this week's sales
+    dailySales: 0,
+    weeklySales: 0,
   });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Fetch sales data from the mock API
+    fetch("http://localhost:5000/sales")
+      .then((response) => response.json())
+      .then((data) => {
+        setSalesData(data); // Update sales data state
+        setLoading(false);   // Stop the loading spinner
+      })
+      .catch((err) => {
+        setError("Failed to load sales data.");
+        setLoading(false);  // Stop the loading spinner even if there's an error
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-xl text-gray-600">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-xl text-red-600">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -31,6 +62,7 @@ const SalesTracking = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
