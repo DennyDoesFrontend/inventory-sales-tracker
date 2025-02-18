@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiBox, FiTruck, FiCheckCircle } from "react-icons/fi"; // Icons for modern touch
 
 const Orders = () => {
   const [orders, setOrders] = useState([
-    { orderId: 1, itemName: "Item A", quantity: 2, status: "Pending" },
-    { orderId: 2, itemName: "Item B", quantity: 1, status: "Shipped" },
-    { orderId: 3, itemName: "Item C", quantity: 5, status: "Pending" },
+    { orderId: 1, customerName: "John Doe", food: "Burger", price: 12.99, status: "Pending" },
+    { orderId: 2, customerName: "Jane Smith", food: "Pizza", price: 15.49, status: "Delivered" },
+    { orderId: 3, customerName: "Alice Johnson", food: "Pasta", price: 9.99, status: "Pending" },
   ]);
-  
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchChange = (e) => {
@@ -17,10 +17,21 @@ const Orders = () => {
 
   const filteredOrders = orders.filter(
     (order) =>
-      order.itemName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      order.customerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.orderId.toString().includes(searchQuery) ||
+      order.food.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.status.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const toggleStatus = (orderId) => {
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.orderId === orderId
+          ? { ...order, status: order.status === "Delivered" ? "Pending" : "Delivered" }
+          : order
+      )
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200">
@@ -57,9 +68,10 @@ const Orders = () => {
               <div className="flex items-center space-x-4">
                 <FiBox className="text-blue-600 text-4xl" />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800">{order.itemName}</h3>
+                  <h3 className="text-xl font-semibold text-gray-800">{order.food}</h3>
                   <p className="text-gray-700">Order ID: {order.orderId}</p>
-                  <p className="text-sm text-gray-500">Quantity: {order.quantity}</p>
+                  <p className="text-gray-700">Customer: {order.customerName}</p>
+                  <p className="text-sm text-gray-500">Price: ${order.price.toFixed(2)}</p>
                   <p className="text-sm text-gray-500">Status: {order.status}</p>
                 </div>
               </div>
@@ -68,16 +80,14 @@ const Orders = () => {
                 <button className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-200">
                   View Details
                 </button>
-                {order.status !== "Shipped" && (
-                  <button className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-200">
-                    Mark as Shipped
-                  </button>
-                )}
-                {order.status !== "Delivered" && (
-                  <button className="bg-yellow-600 text-white py-2 px-6 rounded-lg hover:bg-yellow-700 transition duration-200">
-                    Mark as Delivered
-                  </button>
-                )}
+                <button
+                  onClick={() => toggleStatus(order.orderId)}
+                  className={`${
+                    order.status === "Delivered" ? "bg-yellow-600" : "bg-green-600"
+                  } text-white py-2 px-6 rounded-lg hover:bg-yellow-700 transition duration-200`}
+                >
+                  {order.status === "Delivered" ? "Mark as Not Delivered" : "Mark as Delivered"}
+                </button>
               </div>
             </div>
           ))}

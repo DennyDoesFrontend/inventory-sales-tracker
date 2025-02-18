@@ -6,6 +6,7 @@ import Inventory from './pages/Inventory';
 import Sales from './pages/Sales';
 import Orders from './pages/Orders';
 import Settings from './pages/Settings';
+import MenuManagement from './pages/MenuManagement';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/sales" element={<Sales />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/MenuManagement" element={<MenuManagement />} />
       </Routes>
     </Router>
   );
