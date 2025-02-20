@@ -4,9 +4,9 @@ import { FiBox, FiTruck, FiCheckCircle } from "react-icons/fi"; // Icons for mod
 
 const Orders = () => {
   const [orders, setOrders] = useState([
-    { orderId: 1, customerName: "John Doe", food: "Burger", price: 12.99, status: "Pending" },
-    { orderId: 2, customerName: "Jane Smith", food: "Pizza", price: 15.49, status: "Delivered" },
-    { orderId: 3, customerName: "Alice Johnson", food: "Pasta", price: 9.99, status: "Pending" },
+    { orderId: 1, customerName: "John Doe", food: "Burger", price: 12.99, status: "Pending", orderTable: 'Table 4' },
+    { orderId: 2, customerName: "Jane Smith", food: "Pizza", price: 15.49, status: "Delivered", orderTable: 'Table 7' },
+    { orderId: 3, customerName: "Alice Johnson", food: "Pasta", price: 9.99, status: "Pending", orderTable: 'Table 9' },
   ]);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -73,6 +73,7 @@ const Orders = () => {
                   <p className="text-gray-700">Customer: {order.customerName}</p>
                   <p className="text-sm text-gray-500">Price: ${order.price.toFixed(2)}</p>
                   <p className="text-sm text-gray-500">Status: {order.status}</p>
+                  <p className="text-sm text-gray-500">Order Table: {order.orderTable}</p>
                 </div>
               </div>
 

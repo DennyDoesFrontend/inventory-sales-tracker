@@ -25,12 +25,13 @@ const MenuManagement = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 w-[100vw] ">
       <h2 className="text-2xl font-semibold mb-6">Menu Management</h2>
+      <MenuForm onSave={addMenuItem} />
 
-      <div className="space-y-6">
+      <div className="space-y-6 flex  items-center gap-4 min-w-[300px] w-full h-full">
         {menuItems.map(item => (
-          <div key={item.id} className="bg-white p-6 rounded-lg shadow-md">
+          <div key={item.id} className="bg-white p-6 rounded-lg shadow-md flex-1">
             <h3 className="text-xl font-bold">{item.name}</h3>
             <p className="text-gray-600">Price: ${item.price}</p>
             <p className="mt-2">{item.description}</p>
@@ -56,9 +57,6 @@ const MenuManagement = () => {
           </div>
         ))}
       </div>
-
-      {/* Add New Menu Item Form */}
-      <MenuForm onSave={addMenuItem} />
     </div>
   );
 };

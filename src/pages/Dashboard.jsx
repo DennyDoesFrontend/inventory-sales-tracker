@@ -14,10 +14,10 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-gray-200">
+    <div className="min-h-screen">
       {/* Header */}
-      <header className="flex justify-between items-center p-8 bg-gradient-to-r from-orange-700 to-red-600 text-white shadow-lg">
-        <h1 className="text-4xl font-extrabold tracking-wide">Restaurant Dashboard</h1>
+      <header className="flex justify-between items-center p-8 bg-blue-500 text-white shadow-lg">
+        <h1 className="text-2xl font-semibold tracking-wide">MamaLit Restaurant Dashboard</h1>
         <nav className="space-x-6">
           <Link to="/inventory" className="hover:underline">Inventory</Link>
           <Link to="/sales" className="hover:underline">Sales</Link>
@@ -28,7 +28,7 @@ const Dashboard = () => {
 
       {/* Stock Alert Notification */}
       {stockAlert && (
-        <div className="bg-red-600 text-white p-4 mb-8 text-center rounded-lg shadow-md">
+        <div className="bg-red-600 text-white p-4 mb-8 text-center shadow-md">
           <strong>⚠️ Alert:</strong> Low stock on essential kitchen ingredients!
         </div>
       )}
@@ -80,6 +80,7 @@ const Dashboard = () => {
             { name: "Track Sales", to: "/sales", color: "bg-green-600", icon: <FiTrendingUp /> },
             { name: "Manage Orders", to: "/orders", color: "bg-yellow-600", icon: <FiShoppingCart /> },
             { name: "Menu Management", to: "/MenuManagement", color: "bg-red-600", icon: <FiClipboard /> },
+            { name: "Food Ordering", to: "/FoodOrdering", color: "bg-teal-600", icon: <FiClipboard /> },
           ].map((link) => (
             <Link
               key={link.name}

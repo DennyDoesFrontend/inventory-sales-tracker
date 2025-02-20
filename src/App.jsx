@@ -7,7 +7,7 @@ import Sales from './pages/Sales';
 import Orders from './pages/Orders';
 import Settings from './pages/Settings';
 import MenuManagement from './pages/MenuManagement';
-
+import FoodOrdering from './pages/FoodOrdering';
 const App = () => {
   return (
     <Router>
@@ -19,6 +19,8 @@ const App = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/MenuManagement" element={<MenuManagement />} />
+        <Route path="/FoodOrdering" element={<FoodOrdering />} />
+        
       </Routes>
     </Router>
   );
