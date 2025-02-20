@@ -2,10 +2,10 @@ import { useState } from "react";
 import { ShoppingCart, CheckCircle, Trash2 } from "lucide-react";
 
 const menuItems = [
-  { id: 1, name: "Margherita Pizza", price: 12.99, image: "https://via.placeholder.com/150" },
-  { id: 2, name: "Classic Burger", price: 9.99, image: "https://via.placeholder.com/150" },
-  { id: 3, name: "Pasta Alfredo", price: 14.99, image: "https://via.placeholder.com/150" },
-  { id: 4, name: "Caesar Salad", price: 7.99, image: "https://via.placeholder.com/150" },
+  { id: 1, name: "Margherita Pizza", price: 12.99, image: "/c.png" },
+  { id: 2, name: "Classic Burger", price: 9.99, image: "/c.png" },
+  { id: 3, name: "Pasta Alfredo", price: 14.99, image: "/c.png" },
+  { id: 4, name: "Caesar Salad", price: 7.99, image: "/c.png" },
 ];
 
 const FoodOrdering = () => {
